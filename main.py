@@ -11,7 +11,7 @@ while True:
     cap.grab()
     ret, current_frame = cap.read()
 
-    if time() - last_time < 5:
+    if time() - last_time < 3:
         continue
 
     if saved_frame is None:
@@ -25,7 +25,7 @@ while True:
             cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY),
             full=True,
         )
-        if score < 0.85:
+        if score < 0.875:
             cv2.imwrite(f"slide{i}.png", current_frame)
             saved_frame = current_frame
             last_time = time()
